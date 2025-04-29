@@ -62,9 +62,10 @@ const (
 	AwsServer
 	DemoServer
 
-	RestURL      = BaseURL("https://www.okx.com")
-	PublicWsURL  = BaseURL("wss://ws.okx.com:8443/ws/v5/public")
-	PrivateWsURL = BaseURL("wss://ws.okx.com:8443/ws/v5/private")
+	RestURL       = BaseURL("https://www.okx.com")
+	PublicWsURL   = BaseURL("wss://ws.okx.com:8443/ws/v5/public")
+	PrivateWsURL  = BaseURL("wss://ws.okx.com:8443/ws/v5/private")
+	BusinessWsURL = BaseURL("wss://ws.okx.com:8443/ws/v5/business")
 
 	AwsRestURL      = BaseURL("https://aws.okx.com")
 	AwsPublicWsURL  = BaseURL("wss://wsaws.okx.com:8443/ws/v5/public")

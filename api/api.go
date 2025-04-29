@@ -2,6 +2,7 @@ package api
 
 import (
 	"context"
+
 	"github.com/amir-the-h/okex"
 	"github.com/amir-the-h/okex/api/rest"
 	"github.com/amir-the-h/okex/api/ws"
@@ -19,6 +20,7 @@ func NewClient(ctx context.Context, apiKey, secretKey, passphrase string, destin
 	restURL := okex.RestURL
 	wsPubURL := okex.PublicWsURL
 	wsPriURL := okex.PrivateWsURL
+	wsBusURL := okex.BusinessWsURL
 	switch destination {
 	case okex.AwsServer:
 		restURL = okex.AwsRestURL
@@ -31,7 +33,7 @@ func NewClient(ctx context.Context, apiKey, secretKey, passphrase string, destin
 	}
 
 	r := rest.NewClient(apiKey, secretKey, passphrase, restURL, destination)
-	c := ws.NewClient(ctx, apiKey, secretKey, passphrase, map[bool]okex.BaseURL{true: wsPriURL, false: wsPubURL})
+	c := ws.NewClient(ctx, apiKey, secretKey, passphrase, map[string]okex.BaseURL{"private": wsPriURL, "public": wsPubURL, "business": wsBusURL})
 
 	return &Client{r, c, ctx}, nil
 }
